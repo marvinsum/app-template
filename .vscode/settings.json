@@ -1,0 +1,4 @@
+{
+  // Prevent errors in VSCode ESLint extension
+  "eslint.experimental.useFlatConfig": null,
+}
