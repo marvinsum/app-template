@@ -11,7 +11,10 @@
         "types": ["node"],
         "noEmit": true,
         "isolatedModules": true,
-        "allowImportingTsExtensions": true
+        "allowImportingTsExtensions": true,
+        "paths": {
+            "@/*": ["./src/*"]
+        }
     },
     "include": ["cli/**/*", "src/**/*", "*.config.ts"]
 }
