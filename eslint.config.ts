@@ -2,11 +2,15 @@ import eslintReact from "@eslint-react/eslint-plugin";
 import stylistic from "@stylistic/eslint-plugin";
 import { defineConfig } from "eslint/config";
 import eslintConfigPrettier from "eslint-config-prettier";
+import betterTailwind from "eslint-plugin-better-tailwindcss";
 import prettier from "eslint-plugin-prettier";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import tseslint from "typescript-eslint";
 
 export default defineConfig([
+    {
+        ignores: ["**/dist/**", "**/node_modules/**"],
+    },
     {
         files: ["**/*.ts", "**/*.tsx"],
         extends: [eslintConfigPrettier, eslintReact.configs["recommended-typescript"], tseslint.configs.recommended],
@@ -19,12 +23,14 @@ export default defineConfig([
         },
         plugins: {
             "@stylistic": stylistic,
+            "better-tailwindcss": betterTailwind,
             prettier,
             "simple-import-sort": simpleImportSort,
         },
         rules: {
             "@stylistic/eol-last": ["error", "always"],
             "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
+            "better-tailwindcss/enforce-consistent-class-order": ["warn", { order: "asc" }],
             "prettier/prettier": "error",
             "simple-import-sort/exports": "error",
             "simple-import-sort/imports": "error",
